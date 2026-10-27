@@ -23,7 +23,7 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-      background-color: #fdfbf7; /* โทนสีครีม */
+      background-color: #fdfbf7;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -95,7 +95,6 @@
       transition: opacity 0.5s ease;
     }
 
-    /* แถบถูไม้ขีดโทนม่วงเข้ม-ครีม */
     .matchbox-striker {
       width: 210px;
       height: 55px;
@@ -126,10 +125,9 @@
     .matchstick-item:active { cursor: grabbing; }
     .matchstick-item img { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
 
-    /* ปรับปุ่มหัวใจให้เลื่อนลงมาด้านล่างเพิ่มขึ้น */
     .bouncing-heart-trigger {
       position: absolute;
-      bottom: 30px; /* ขยับลงมาจาก 80px */
+      bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 75px;
@@ -150,7 +148,6 @@
       50% { transform: translateX(-50%) scale(1.25) rotate(-5deg); }
     }
 
-    /* Modal หัวใจสะสมพลังรัก โทนม่วงครีม */
     .big-heart-modal {
       position: absolute;
       top: 0;
@@ -208,14 +205,13 @@
       50% { opacity: 1; }
     }
 
-    /* พื้นหลังรูปภาพ */
     .polaroid-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('พื้นหลัง.jpg');
+      background-image: url('พื้นหลัง.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -229,7 +225,6 @@
 
     .polaroid-container { position: relative; width: 100%; height: 100%; }
 
-    /* Polaroid Cards */
     .polaroid {
       position: absolute;
       width: 120px;
@@ -258,7 +253,6 @@
       transition: max-height 0.4s ease;
     }
 
-    /* ขนาดตัวหนังสือใต้รูปคงไว้เท่าเดิม */
     .polaroid .caption {
       opacity: 0;
       max-height: 0;
@@ -338,7 +332,6 @@
       animation-delay: var(--anim-delay, 0s);
     }
 
-    /* เมื่อกดเปิดดูรูปภาพ: ขยายรูปใหญ่ขึ้น ชัดเจนขึ้น (80%+) โดยที่ตัวหนังสือยังเท่าเดิม */
     .polaroid.active {
       position: fixed !important;
       top: 50% !important;
@@ -346,7 +339,7 @@
       transform: translate(-50%, -50%) scale(1) rotate(0deg) !important;
       z-index: 999 !important;
       width: fit-content !important;
-      max-width: 95vw !important; /* ขยายความกว้างกล่องรูป */
+      max-width: 95vw !important;
       height: auto !important;
       padding: 10px 10px 20px 10px !important;
       box-shadow: 0 30px 60px rgba(40, 20, 60, 0.45) !important;
@@ -361,13 +354,12 @@
     .polaroid.active img {
       width: auto !important;
       max-width: 100% !important;
-      max-height: 75vh !important; /* ขยายความสูงรูปให้ใหญ่ชัดเจน */
+      max-height: 75vh !important;
       object-fit: contain !important;
       border-radius: 3px;
       background-color: #ffffff;
     }
 
-    /* ข้อความใต้รูปคงขนาด font-size: 11px ตามเดิม */
     .polaroid.active .caption {
       opacity: 1;
       max-height: 120px;
@@ -383,7 +375,6 @@
       transform: scale(1);
     }
 
-    /* ปุ่มย้อนกลับโทนม่วง */
     .back-to-message-btn {
       position: absolute;
       bottom: 25px;
@@ -566,7 +557,7 @@
           vx: (Math.random() - 0.5) * spread,
           vy: (Math.random() - 0.5) * spread - 1.2,
           size: Math.random() * 3 + 1,
-          color: `hsl(${270 + Math.random() * 30}, 80%, 65%)`, /* เอฟเฟกต์ประกายไฟโทนม่วง */
+          color: `hsl(${270 + Math.random() * 30}, 80%, 65%)`,
           alpha: 1,
           life: Math.random() * 18 + 10
         });
@@ -806,7 +797,7 @@
     }, { passive: false });
     window.addEventListener('touchend', stopWatering);
 
-    const purpleHearts = ['💜', '✨', '🤍'];
+    const purpleHearts = ['💜', '🔮', '✨', '🤍', '💖'];
 
     function createFloatingHearts(count = 1, customX = null, customY = null) {
       for (let i = 0; i < count; i++) {
@@ -836,31 +827,30 @@
       }, 120);
     }
 
-    /* ข้อมูลรูปภาพ 5 รูป จัดตำแหน่งกระจายสมดุลซ้าย-ขวา-กลาง และเปลี่ยนข้อความตามขอเรียบร้อยแล้ว */
     const polaroidData = [
       { 
         img: 'photo1.jpg', 
-        text: 'จริงๆอยากถ่ายรูปคู่กับเเฟนมั่ง<br>เเต่มีแค่รูปเดียวเองที่เผลอถ่าย<br>ติดเเฟนในอนาคตของเวลานั้นมา', 
+        text: 'จริงๆอยากถ่ายรูปคู่กับเเฟนมั่ง เเต่มีแค่รูปเดียวเองที่เผลอถ่ายติดเเฟนในอนาคตของเวลานั้นมา', 
         top: '10%', left: '10%', rotate: '-7deg', duration: '1.8s', delay: '0s' 
       },
       { 
         img: 'photo2.jpg', 
-        text: 'พี่ชอบรูปนี้นะในเกม<br>น่ารักมาก', 
+        text: 'พี่ชอบรูปนี้นะในเกม น่ารักมาก', 
         top: '12%', left: '58%', rotate: '8deg', duration: '2.4s', delay: '0.4s' 
       },
       { 
-        img: 'photo3.jpg', /* เปลี่ยนเป็น .jpg */
-        text: 'รูปนี้ตอนเห็นว่าน้องเอารูปพี่ไป<br>ตั้งตอนนั้นคือพี่ดีใจมากเลยล่ะ<br>เเต่เม้มตอนนั้น5555', 
+        img: 'photo3.jpg', 
+        text: 'รูปนี้ตอนเห็นว่าน้องเอารูปพี่ไปตั้งตอนนั้นคือพี่ดีใจมากเลยล่ะเเต่เม้มตอนนั้น5555', 
         top: '38%', left: '34%', rotate: '-2deg', duration: '1.6s', delay: '0.2s' 
       },
       { 
         img: 'photo4.jpg', 
-        text: 'ชอบมากเลย<br>เวลาเเฟนส่งมาให้ดู<br>เพราะว่าแฟนน่ารักมาก🤩🥰', 
+        text: 'ชอบมากเลยเวลาเเฟนส่งมาให้ดูเพราะว่าแฟนน่ารักมาก🤩🥰', 
         top: '64%', left: '12%', rotate: '6deg', duration: '2.2s', delay: '0.6s' 
       },
       { 
         img: 'photo5.jpg', 
-        text: 'ละนี่อะไรเอ่ย<br>คิดถึงพี่หรา🧐☝️', 
+        text: 'ละนี่อะไรเอ่ย คิดถึงพี่หรา🧐☝️', 
         top: '62%', left: '56%', rotate: '-6deg', duration: '2.0s', delay: '0.3s' 
       }
     ];
